@@ -1,3 +1,4 @@
+import org.jetbrains.compose.jetbrainsCompose
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
@@ -12,7 +13,7 @@ plugins {
 }
 
 repositories {
-    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    jetbrainsCompose()
     mavenCentral()
     google()
 }
@@ -56,6 +57,7 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
+
         val jsMain by getting {
             dependencies {
                 // compose
@@ -65,7 +67,6 @@ kotlin {
                 implementation(kotlinw("react"))
                 implementation(kotlinw("react-dom"))
                 implementation(kotlinw("react-router-dom"))
-
             }
         }
     }
