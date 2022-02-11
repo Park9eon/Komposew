@@ -1,4 +1,5 @@
 import org.jetbrains.compose.jetbrainsCompose
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
@@ -17,7 +18,6 @@ repositories {
     mavenCentral()
     google()
 }
-
 // https://youtrack.jetbrains.com/issue/KTOR-1084
 tasks.withType<Kotlin2JsCompile> {
     kotlinOptions {
@@ -57,7 +57,6 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-
         val jsMain by getting {
             dependencies {
                 // compose
@@ -67,6 +66,10 @@ kotlin {
                 implementation(kotlinw("react"))
                 implementation(kotlinw("react-dom"))
                 implementation(kotlinw("react-router-dom"))
+                // npm
+                implementation(devNpm("html-webpack-plugin", "^5.5.0"))
+                implementation(devNpm("workbox-webpack-plugin", "^6.4.2"))
+                implementation(devNpm("webpack-bundle-analyzer", "^4.5.0"))
             }
         }
     }
@@ -74,4 +77,15 @@ kotlin {
 
 afterEvaluate {
     yarn.lockFileDirectory = projectDir
+}
+
+val copyAssets = tasks.register<Copy>("copyAssets") {
+    tasks.withType<KotlinWebpack>().forEach {
+        from(File("assets"))
+        into(it.configFile.parent)
+    }
+}
+
+tasks.named("jsProcessResources") {
+    dependsOn(copyAssets)
 }
