@@ -1,4 +1,4 @@
-rootProject.name = "compose-jb"
+rootProject.name = "compose-js"
 
 pluginManagement {
     resolutionStrategy {
