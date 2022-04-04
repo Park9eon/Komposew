@@ -1,6 +1,6 @@
 {
-  "name": "Komposew",
-  "short_name": "Komposew",
+  "name": "compose-js",
+  "short_name": "compose-js",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

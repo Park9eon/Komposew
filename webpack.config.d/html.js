@@ -1,9 +1,9 @@
-(function (config) {
+;(function (config) {
     const HtmlWebpackPlugin = require("html-webpack-plugin")
 
     config.plugins.push(
         new HtmlWebpackPlugin({
-            title: "Komposew",
+            title: "compose-js",
             filename: "index.html",
             publicPath: "/"
         }),

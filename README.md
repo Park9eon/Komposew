@@ -1,11 +1,13 @@
-Komposew
+Compose-JS
 ---
 
-Kotlin + Compose-JB + React Web
+Compose-JB Web Sample UIs
 
 # Run
 
-./gradlew jsBrowserRun --continuous
+```bash
+./gradlew jsBrowserRun --continuous # or ./gradlew jsBrowserRun -t
+```
 
 # See also
 
