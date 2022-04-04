@@ -1,14 +1,11 @@
 import org.jetbrains.compose.jetbrainsCompose
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
     idea
-
     kotlin("multiplatform")
     kotlin("plugin.serialization")
-
     id("org.jetbrains.compose")
     id("com.palantir.consistent-versions")
 }
@@ -18,6 +15,7 @@ repositories {
     mavenCentral()
     google()
 }
+
 // https://youtrack.jetbrains.com/issue/KTOR-1084
 tasks.withType<Kotlin2JsCompile> {
     kotlinOptions {
@@ -29,13 +27,16 @@ tasks.withType<Kotlin2JsCompile> {
 }
 
 kotlin {
-    js(IR) {
+    js {
         browser {
             commonWebpackConfig {
-                outputFileName = "app.js"
+                devtool = null
             }
             runTask {
                 devServer?.open = false
+            }
+            webpackTask {
+                report = false
             }
         }
         binaries.executable()
@@ -45,9 +46,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
-                implementation(kotlinx("html"))
-                implementation(kotlinx("datetime"))
-                implementation(kotlinx("serialization-json"))
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime")
             }
         }
 
@@ -57,19 +56,14 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
+
         val jsMain by getting {
             dependencies {
                 // compose
                 implementation(compose.web.core)
                 implementation(compose.runtime)
-                // https://github.com/JetBrains/kotlin-wrappers
-                implementation(kotlinw("react"))
-                implementation(kotlinw("react-dom"))
-                implementation(kotlinw("react-router-dom"))
                 // npm
                 implementation(devNpm("html-webpack-plugin", "^5.5.0"))
-                implementation(devNpm("workbox-webpack-plugin", "^6.4.2"))
-                implementation(devNpm("webpack-bundle-analyzer", "^4.5.0"))
             }
         }
     }
@@ -79,13 +73,8 @@ afterEvaluate {
     yarn.lockFileDirectory = projectDir
 }
 
-val copyAssets = tasks.register<Copy>("copyAssets") {
-    tasks.withType<KotlinWebpack>().forEach {
-        from(File("assets"))
-        into(it.configFile.parent)
-    }
-}
+val gradleWrapperVersion: String by extra
 
-tasks.named("jsProcessResources") {
-    dependsOn(copyAssets)
+tasks.withType<Wrapper> {
+    gradleVersion = gradleWrapperVersion
 }

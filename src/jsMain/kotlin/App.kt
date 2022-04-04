@@ -1,13 +1,13 @@
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
-import org.jetbrains.compose.web.renderComposable
+import org.jetbrains.compose.web.renderComposableInBody
 
 fun main() {
     val message = "Hello, Kotlin World!"
 
     console.log(message)
 
-    renderComposable(rootElementId = "app") {
+    renderComposableInBody {
         Div {
             Text(message)
         }
