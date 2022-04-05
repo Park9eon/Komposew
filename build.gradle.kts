@@ -62,6 +62,9 @@ kotlin {
                 // compose
                 implementation(compose.web.core)
                 implementation(compose.runtime)
+                implementation(kotlinw("browser"))
+                implementation(kotlinw("extensions"))
+                implementation(kotlinw("history"))
                 // npm
                 implementation(devNpm("html-webpack-plugin", "^5.5.0"))
             }
