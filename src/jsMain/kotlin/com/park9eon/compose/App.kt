@@ -1,5 +1,5 @@
-import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Text
+package com.park9eon.compose
+
 import org.jetbrains.compose.web.renderComposableInBody
 
 fun main() {
@@ -8,8 +8,5 @@ fun main() {
     console.log(message)
 
     renderComposableInBody {
-        Div {
-            Text(message)
-        }
     }
 }
