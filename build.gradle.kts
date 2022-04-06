@@ -68,15 +68,15 @@ kotlin {
                 // compose
                 implementation(compose.web.core)
                 implementation(compose.runtime)
-                implementation(kotlinw("browser"))
-                implementation(kotlinw("extensions"))
-                implementation(kotlinw("history"))
                 // npm
                 implementation(devNpm("html-webpack-plugin", "^5.5.0"))
-
+                // vaadin
                 fun vaadin(component: String) = npm("@vaadin/vaadin-${component}", "^23.0.4")
                 implementation(vaadin("button"))
                 implementation(vaadin("date-time-picker"))
+                // material
+                fun material(component: String) = npm("@material/mwc-${component}", "^0.25.3")
+                implementation(material("button"))
             }
         }
     }
