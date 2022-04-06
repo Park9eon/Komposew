@@ -1,27 +1,8 @@
 package com.park9eon.compose
 
-fun <K, V> Map<K, V>.toSearch(): String {
-    if (this.isEmpty()) {
-        return ""
-    }
+import com.park9eon.compose.PathPatternUtils.takeNotBlankWithPrefix
 
-    return this.map { (key, value) ->
-        "${key}=${value ?: ""}"
-    }.joinToString(
-        separator = "&",
-        prefix = "?",
-    )
-}
-
-internal fun String.takeNotBlankWithPrefix(prefix: String): String {
-    return this.takeIf {
-        it.isNotBlank()
-    }?.let {
-        "$prefix$it"
-    }?: ""
-}
-
-fun urlPatternMatch(pattern: String, path: String): URLPatternResult? {
+fun pathPatternMatch(pattern: String, path: String): PathPatternResult? {
     if (path.isBlank()) {
         return null
     }
@@ -84,7 +65,7 @@ fun urlPatternMatch(pattern: String, path: String): URLPatternResult? {
         }
     }
 
-    return URLPatternResult(
+    return PathPatternResult(
         path = path,
         pathname = pathname,
         search = search.takeNotBlankWithPrefix("?"),

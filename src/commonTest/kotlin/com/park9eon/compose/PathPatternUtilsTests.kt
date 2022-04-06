@@ -1,9 +1,10 @@
 package com.park9eon.compose
 
+import com.park9eon.compose.PathPatternUtils.toSearch
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class URLPatternToSearchTests {
+class PathPatternUtilsTests {
 
     @Test
     fun testMapToSearch() {

@@ -1,18 +1,19 @@
 package com.park9eon.compose
 
+import com.park9eon.compose.PathPatternUtils.get
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
-class URLPatternMatchTests {
+class PathPatternMatchTests {
 
     @Test
-    fun testUrlPatternMatchWhenPatternEqualsPath() {
+    fun testPathPatternMatchWhenPatternEqualsPath() {
         val pattern = "/foo"
         val path = "/foo"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -20,11 +21,11 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchWhenPatternEqualsPathWithTrailingSlash() {
+    fun testPathPatternMatchWhenPatternEqualsPathWithTrailingSlash() {
         val pattern = "/foo"
         val path = "/foo/"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -32,11 +33,11 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchWhenPatternEqualsPathWithTrailingQuestion() {
+    fun testPathPatternMatchWhenPatternEqualsPathWithTrailingQuestion() {
         val pattern = "/foo"
         val path = "/foo?"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -45,11 +46,11 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchWhenPatternEqualsPathWithTrailingHash() {
+    fun testPathPatternMatchWhenPatternEqualsPathWithTrailingHash() {
         val pattern = "/foo"
         val path = "/foo#"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -58,21 +59,21 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchWhenPatternNotEqualsPath() {
+    fun testPathPatternMatchWhenPatternNotEqualsPath() {
         val pattern = "/foo"
         val path = "/bar"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNull(result)
     }
 
     @Test
-    fun testUrlPatternMatchWhenPathHasQueryParams() {
+    fun testPathPatternMatchWhenPathHasQueryParams() {
         val pattern = "/foo"
         val path = "/foo?foo=bar"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -84,11 +85,11 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchWhenPatternHasSlug() {
+    fun testPathPatternMatchWhenPatternHasSlug() {
         val pattern = "/foo/:slug"
         val path = "/foo/bar"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -99,11 +100,11 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchWhenHasHash() {
+    fun testPathPatternMatchWhenHasHash() {
         val pattern = "/foo"
         val path = "/foo#abc"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -112,11 +113,11 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchFull() {
+    fun testPathPatternMatchFull() {
         val pattern = "/foo/:slug"
         val path = "/foo/bar?q=baz#abc"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
@@ -126,11 +127,11 @@ class URLPatternMatchTests {
     }
 
     @Test
-    fun testUrlPatternMatchWhenEscaped() {
+    fun testPathPatternMatchWhenEscaped() {
         val pattern = "/[:time]-[:id]/^[]$.{}()|+*:;'`,"
         val path = "/[1]-[2]/^[]$.{}()|+*:;'`,"
 
-        val result: URLPatternResult? = urlPatternMatch(pattern = pattern, path = path)
+        val result: PathPatternResult? = pathPatternMatch(pattern = pattern, path = path)
 
         assertNotNull(result)
         assertEquals(path, result.path)
