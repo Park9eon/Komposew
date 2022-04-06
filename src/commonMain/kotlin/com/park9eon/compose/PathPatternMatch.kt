@@ -29,7 +29,6 @@ fun pathPatternMatch(pattern: String, path: String): PathPatternResult? {
 
         "([^\\/]+)"
     }.let {
-        println(it)
         Regex("^${it}/?$")
     }
 

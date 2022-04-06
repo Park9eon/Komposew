@@ -34,6 +34,8 @@ kotlin {
             }
             runTask {
                 devServer?.open = false
+
+                args += "--history-api-fallback"
             }
             webpackTask {
                 report = false
