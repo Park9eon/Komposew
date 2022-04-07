@@ -1,6 +1,8 @@
 package com.park9eon.compose
 
 import androidx.compose.runtime.Composable
+import com.park9eon.compose.vaadin.VaadinButton
+import com.park9eon.compose.vaadin.VaadinDateTimePicker
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.renderComposableInBody
@@ -29,6 +31,9 @@ fun main() {
     console.log(message)
 
     renderComposableInBody {
+        VaadinButton()
+        VaadinDateTimePicker()
+
         Router {
             Route(path = "/user") {
                 Navigation()
