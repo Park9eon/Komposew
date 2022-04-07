@@ -34,6 +34,8 @@ kotlin {
             }
             runTask {
                 devServer?.open = false
+
+                args += "--history-api-fallback"
             }
             webpackTask {
                 report = false
@@ -52,6 +54,7 @@ kotlin {
 
         commonTest {
             dependencies {
+                implementation(kotlin("test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
@@ -62,6 +65,9 @@ kotlin {
                 // compose
                 implementation(compose.web.core)
                 implementation(compose.runtime)
+                implementation(kotlinw("browser"))
+                implementation(kotlinw("extensions"))
+                implementation(kotlinw("history"))
                 // npm
                 implementation(devNpm("html-webpack-plugin", "^5.5.0"))
             }
