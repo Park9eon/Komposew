@@ -65,6 +65,7 @@ kotlin {
                 implementation(kotlinw("browser"))
                 implementation(kotlinw("extensions"))
                 implementation(kotlinw("history"))
+                implementation(kotlinw("typescript"))
                 // compose
                 implementation(compose.web.core)
                 implementation(compose.runtime)
