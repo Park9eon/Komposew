@@ -1,4 +1,4 @@
-package com.park9eon.compose
+package com.park9eon.compose.router
 
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.web.attributes.ATarget
