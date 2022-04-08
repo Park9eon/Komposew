@@ -46,10 +46,12 @@ fun main() {
                 opened = !opened
             }
         }) {
-            Text("Open! $count")
+            Text("Open! $count $opened")
         }
 
-        VaadinDialog(opened) {
+        VaadinDialog(opened, draggable = false, theme = "no-padding", onOpened =  {
+//            opened = it
+        }) {
             Div {
                 P {
                     Text("$count")
@@ -63,7 +65,12 @@ fun main() {
                 }
             }
         }
-        VaadinButton()
+        VaadinButton("Button") {
+
+        }
+        VaadinButton("button2", theme = "primary") {
+
+        }
         VaadinDateTimePicker()
 
         MaterialButton()
