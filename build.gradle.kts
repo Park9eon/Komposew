@@ -71,8 +71,6 @@ kotlin {
                 implementation(compose.runtime)
                 // npm
                 implementation(devNpm("html-webpack-plugin", "^5.5.0"))
-                // lit
-                implementation(devNpm("lit", "^2.2.2"))
                 // vaadin
                 fun vaadin(component: String) = npm("@vaadin/vaadin-${component}", "^23.0.4")
                 implementation(vaadin("button"))
