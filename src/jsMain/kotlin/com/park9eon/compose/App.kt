@@ -9,6 +9,7 @@ import com.park9eon.compose.vaadin.VaadinDateTimePicker
 import com.park9eon.compose.vaadin.VaadinDialog
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.renderComposableInBody
 
@@ -36,16 +37,32 @@ fun main() {
     console.log(message)
 
     renderComposableInBody {
+        var count: Int by remember { mutableStateOf(0) }
         var opened: Boolean by remember { mutableStateOf(false) }
+
         Button(attrs = {
             onClick {
+                count += 1
                 opened = !opened
             }
         }) {
-            Text("Open!")
+            Text("Open! $count")
         }
 
-        VaadinDialog(opened)
+        VaadinDialog(opened) {
+            Div {
+                P {
+                    Text("$count")
+                }
+                Button(attrs = {
+                    onClick {
+                        count += 1
+                    }
+                }) {
+                    Text("Click Me!")
+                }
+            }
+        }
         VaadinButton()
         VaadinDateTimePicker()
 

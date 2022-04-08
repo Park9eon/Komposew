@@ -13,37 +13,28 @@ abstract external class VaadinDialogElement : HTMLElement {
 @Composable
 fun VaadinDialog(
     opened: Boolean,
+    content: @Composable () -> Unit
 ) {
     remember { require("@vaadin/dialog") }
+    var composition: Composition? by remember { mutableStateOf(null) }
 
     TagElement<VaadinDialogElement>("vaadin-dialog", {
-        ref {
-            it.renderer = { root: HTMLElement ->
-                renderComposable(root) {
-                    Div {
-                        var value by remember { mutableStateOf(0) }
-                        P {
-                            Text("$value")
-                        }
-                        Button(attrs = {
-                            onClick {
-                                value += 1
-                            }
-                        }) {
-                            Text("Click Me!")
-                        }
-                    }
+        ref { element ->
+            element.renderer = renderer@{ root ->
+                if (composition != null) {
+                    return@renderer
+                }
+
+                composition = renderComposable(root) {
+                    content()
                 }
             }
 
             onDispose {
+                composition?.dispose()
+                composition = null
             }
         }
         attr("opened", "$opened")
-        onClick {
-            console.log("Clicked!!")
-        }
-    }) {
-        Text("This is modal")
-    }
+    }, null)
 }
