@@ -65,6 +65,7 @@ kotlin {
                 implementation(kotlinw("browser"))
                 implementation(kotlinw("extensions"))
                 implementation(kotlinw("history"))
+                implementation(kotlinw("typescript"))
                 // compose
                 implementation(compose.web.core)
                 implementation(compose.runtime)
@@ -74,6 +75,7 @@ kotlin {
                 fun vaadin(component: String) = npm("@vaadin/vaadin-${component}", "^23.0.4")
                 implementation(vaadin("button"))
                 implementation(vaadin("date-time-picker"))
+                implementation(vaadin("dialog"))
                 // material
                 fun material(component: String) = npm("@material/mwc-${component}", "^0.25.3")
                 implementation(material("button"))

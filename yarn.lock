@@ -350,6 +350,19 @@
     "@vaadin/vaadin-material-styles" "^23.0.4"
     "@vaadin/vaadin-themable-mixin" "^23.0.4"
 
+"@vaadin/dialog@^23.0.4":
+  version "23.0.4"
+  resolved "https://registry.yarnpkg.com/@vaadin/dialog/-/dialog-23.0.4.tgz#5c19826dcf7299bf540888e1da2c45c08ccd2dd6"
+  integrity sha512-Pydu4aGHHaqBn8Cb7+e52gujc82wGnsAdyOO1llQsYQ3hfrGo1Fyug0T671QeNnN2QQ41HwODOJ9ZbyzXSO8QA==
+  dependencies:
+    "@open-wc/dedupe-mixin" "^1.3.0"
+    "@polymer/polymer" "^3.0.0"
+    "@vaadin/component-base" "^23.0.4"
+    "@vaadin/vaadin-lumo-styles" "^23.0.4"
+    "@vaadin/vaadin-material-styles" "^23.0.4"
+    "@vaadin/vaadin-overlay" "^23.0.4"
+    "@vaadin/vaadin-themable-mixin" "^23.0.4"
+
 "@vaadin/field-base@^23.0.4":
   version "23.0.4"
   resolved "https://registry.yarnpkg.com/@vaadin/field-base/-/field-base-23.0.4.tgz#6c253ce32ea188eb49da966f364fb9ab2b8412f9"
@@ -426,6 +439,13 @@
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@vaadin/vaadin-development-mode-detector/-/vaadin-development-mode-detector-2.0.5.tgz#5098216dae30d8eeabe46c7cbe494a352fe09691"
   integrity sha512-miirBQw10UHjKwRv29iZniXCo41cLg3wFotoyTeUZ2PTGIDk/fZVFr4Q4WVKZrp3D15878vz94nNQROSmPLjdg==
+
+"@vaadin/vaadin-dialog@^23.0.4":
+  version "23.0.4"
+  resolved "https://registry.yarnpkg.com/@vaadin/vaadin-dialog/-/vaadin-dialog-23.0.4.tgz#af3be0580f5d2c818d19376cb05bb7b4990e5542"
+  integrity sha512-mA8zzKqmp9wAZ4XW/Ib6OrcVbnSEd/+rFIEtnAS0VYfcZ7/kPsw0b854aO6yPkxYfsZsk0vkMQxo88w40v6rsg==
+  dependencies:
+    "@vaadin/dialog" "^23.0.4"
 
 "@vaadin/vaadin-lumo-styles@^23.0.4":
   version "23.0.4"
@@ -3241,6 +3261,11 @@ typescript@3.9.5:
   version "3.9.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.5.tgz#586f0dba300cde8be52dd1ac4f7e1009c1b13f36"
   integrity sha512-hSAifV3k+i6lEoCJ2k6R2Z/rp/H3+8sdmcn5NrS3/3kE7+RyZXm9aqvxWqjEXHAd8b0pShatpcdMTvEdvAJltQ==
+
+typescript@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
+  integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
 
 ua-parser-js@^0.7.28:
   version "0.7.31"
